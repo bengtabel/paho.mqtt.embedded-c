@@ -23,7 +23,12 @@ add_library(
   paho-embed-mqtt3cc SHARED
   ${SOURCES}
 )
-install(TARGETS paho-embed-mqtt3cc DESTINATION /usr/lib)
+set(MQTTClientC_INCLUDE_HEADERS
+  LiRE/MQTTLiRE.h 
+  MQTTClient.h
+)
+install(TARGETS paho-embed-mqtt3cc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(FILES ${MQTTClientC_INCLUDE_HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/paho)
 target_include_directories(paho-embed-mqtt3cc PRIVATE "linux")
 target_link_libraries(paho-embed-mqtt3cc paho-embed-mqtt3c)
 target_compile_definitions(paho-embed-mqtt3cc PRIVATE

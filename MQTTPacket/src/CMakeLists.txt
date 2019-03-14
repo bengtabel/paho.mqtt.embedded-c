@@ -15,9 +15,11 @@
 #*******************************************************************************/
 
 # MQTTPacket Library
-file(GLOB SOURCES "*.c")
-add_library(paho-embed-mqtt3c SHARED ${SOURCES})
-install(TARGETS paho-embed-mqtt3c DESTINATION /usr/lib)
+file(GLOB MQTTPacket_SOURCES "*.c")
+file(GLOB MQTTPacket_INCLUDE_HEADERS "*.h")
+add_library(paho-embed-mqtt3c SHARED ${MQTTPacket_SOURCES})
+install(TARGETS paho-embed-mqtt3c DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(FILES ${MQTTPacket_INCLUDE_HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/paho)
 target_compile_definitions(paho-embed-mqtt3c PRIVATE MQTT_SERVER MQTT_CLIENT)
 
 add_library(MQTTPacketClient SHARED MQTTFormat MQTTPacket
