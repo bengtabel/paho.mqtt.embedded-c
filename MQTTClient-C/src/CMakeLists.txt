@@ -24,7 +24,7 @@ add_library(
   ${SOURCES}
 )
 set(MQTTClientC_INCLUDE_HEADERS
-  LiRE/MQTTLiRE.h 
+  linux/MQTTLinux.h 
   MQTTClient.h
 )
 install(TARGETS paho-embed-mqtt3cc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
